@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ResultView from '@/views/ResultView.vue'
+import AdminView from  '@/components/adminView.vue'
 
 const routes = [
   {
@@ -16,6 +17,11 @@ const routes = [
       formData: JSON.parse(route.query.formData || '{}')
     }),
     component: ResultView
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: AdminView
   }
 ]
 

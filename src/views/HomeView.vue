@@ -122,7 +122,9 @@
                 <label>Passengers</label>
               </div>
             </div>
-            <button @click="submitForEstimation" class="book-button">View Estimates And Book</button>
+            <button @click="submitForEstimation" class="book-button">
+              View Estimates And Book
+            </button>
           </div>
         </div>
         <div v-else class="coming-soon">
@@ -130,18 +132,18 @@
         </div>
       </div>
     </div>
-    <ErrorPopup ref="pillPopup" />
+    <InfoPopup ref="pillPopup" />
   </div>
 </template>
 
 <script>
-import {caclutateEstimation} from "@/utils/calculateEstimate";
-import ErrorPopup from "@/components/errorPopup.vue";
+import { caclutateEstimation } from "@/utils/calculateEstimate";
+import InfoPopup from "@/components/infoPopup.vue";
 
 export default {
   name: "HomeView",
   components: {
-    ErrorPopup
+    InfoPopup,
   },
   data() {
     return {
@@ -289,49 +291,49 @@ export default {
         this.departureDate = this.validDate;
       }
     },
-    submitForEstimation(){
-
-      if(Object.keys(this.selectedArrivalAirport).length === 0 || Object.keys(this.selectedDeaprtureAirport).length === 0){
+    submitForEstimation() {
+      if (
+        Object.keys(this.selectedArrivalAirport).length === 0 ||
+        Object.keys(this.selectedDeaprtureAirport).length === 0
+      ) {
         this.$refs.pillPopup.showPopup("Kindly Choose a Valid Airports");
-      }
-      else if (
+      } else if (
         this.returnDate < this.departureDate &&
         this.selectedTrip == "round-trip"
       ) {
         this.$refs.pillPopup.showPopup("Return Date cant be before departure");
         this.returnDate = this.departureDate;
-      }
-      else if (this.departureDate < this.validDate) {
+      } else if (this.departureDate < this.validDate) {
         this.$refs.pillPopup.showPopup("Kindly Choose a Valid Date");
         this.departureDate = this.validDate;
-      }
-      else if (this.noOfPassengers=="" || this.noOfPassengers < 0 || this.noOfPassengers > 25) {
-        if(this.noOfPassengers > 25)
-        this.$refs.pillPopup.showPopup("Passengers Cant be More than 25");
-        else{
+      } else if (
+        this.noOfPassengers == "" ||
+        this.noOfPassengers < 0 ||
+        this.noOfPassengers > 25
+      ) {
+        if (this.noOfPassengers > 25)
+          this.$refs.pillPopup.showPopup("Passengers Cant be More than 25");
+        else {
           this.$refs.pillPopup.showPopup("Kindly Enter Number of Passengers");
         }
 
         this.noOfPassengers = Math.min(Math.max(this.noOfPassengers, 1), 25);
-      }
-      else{
+      } else {
         caclutateEstimation({
-          "tripType": this.selectedTrip,
-          "departureAirport":this.selectedDeaprtureAirport,
-          "arrivalAirport":this.selectedArrivalAirport,
-          "departureDate":this.departureDate,
-          "arrivalDate":this.returnDate,
-          "noOfPassengers":this.noOfPassengers
+          tripType: this.selectedTrip,
+          departureAirport: this.selectedDeaprtureAirport,
+          arrivalAirport: this.selectedArrivalAirport,
+          departureDate: this.departureDate,
+          arrivalDate: this.returnDate,
+          noOfPassengers: this.noOfPassengers,
         });
       }
-
-    }
-
+    },
   },
 };
 </script>
 
-<style scoped>
+<style >
 .home {
   display: flex;
   flex-direction: column;

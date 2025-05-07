@@ -92,7 +92,7 @@
 
 <script>
 export default {
-  name: "ExecutiveTurboprops",
+  name: "Results",
 
   props: ["jets", "formData"],
 

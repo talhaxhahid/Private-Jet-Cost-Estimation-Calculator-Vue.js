@@ -1,62 +1,72 @@
 {
-    "jets": [
-      {
-        "id": 1,
-        "name": "Super Midsize Jet",
-        "size": "Super Midsize",
-        "passenger_capacity": {"min":8,"max":12},
-        "rent":{
-            "flight_rent_per_hour":1000,
-             "parked_rent_per_hour":200
-        },
-        "minimum_flight_time_charge_hours": 2,
-        "performance": {
-          "speed_kmph": 833,
-          "fuel_consumption_gph": 180,
-          "max_flight_time_hours": 3.2
-        },
-        "costs": {
-          "fuel_cost_per_gallon": 5.50,
-          "crew_cost_per_hour": 500,
-          "miscellaneous_costs_per_hour": 200,
-          "inspection_cost": 1200,
-          "landing_handling_fees":  800,
-          "airport_parking_per_hour": 250,
-          "crew_parked_cost_hourly": 100
-          
-        },
-        "current_Locations":["LHE" ,"AAL"]
-        ,
-        "img":"assets/mid_size_jet.png"
+  "jets": [
+    {
+      "id": 1,
+      "name": "Super Midsize Jet",
+      "size": "Super Midsize",
+      "passenger_capacity": {
+        "min": 8,
+        "max": 12
       },
-      {
-        "id": 2,
-        "name": "Ultra Long Range Jet",
-        "size": "Ultra Long Range",
-        "passenger_capacity": {"min":15,"max":20},
-        "rent":{
-            "flight_rent_per_hour":1500,
-             "parked_rent_per_hour":300
-        },
-        "minimum_flight_time_charge_hours": 2.5,
-        "performance": {
-          "speed_knots": 490,
-          "speed_kmph": 860,
-          "fuel_consumption_gph": 350,
-          "max_flight_time_hours": 7
-        },
-        "costs": {
-          "fuel_cost_per_gallon": 5.75,
-          "crew_cost_per_hour": 800,
-          "miscellaneous_costs_per_hour": 350,
-          "inspection_cost": 2500,
-          "landing_handling_fees":  800,
-          "airport_parking_per_hour": 250,
-          "crew_parked_cost_hourly": 100
-          
-        } ,
-        "current_Locations":["AAE" ,"AAL"],
-        "img":"assets/long_range_jet.png"
-      }
-    ]
-  }
+      "rent": {
+        "flight_rent_per_hour": 1000,
+        "parked_rent_per_hour": 200
+      },
+      "minimum_flight_time_charge_hours": 2,
+      "performance": {
+        "speed_kmph": 836,
+        "fuel_consumption_gph": 190,
+        "max_flight_time_hours": 3.2
+      },
+      "costs": {
+        "fuel_cost_per_gallon": 5.5,
+        "crew_cost_per_hour": 500,
+        "miscellaneous_costs_per_hour": 200,
+        "inspection_cost": 1200,
+        "landing_handling_fees": 800,
+        "airport_parking_per_hour": 255,
+        "crew_parked_cost_hourly": 100
+      },
+      "current_Locations": [
+        "AAE",
+        "LHE",
+        "KHI"
+      ],
+      "img": "assets/mid_size_jet.png"
+    },
+    {
+      "id": 2,
+      "name": "Ultra Long Range Jet",
+      "size": "Ultra Long Range",
+      "passenger_capacity": {
+        "min": 15,
+        "max": 20
+      },
+      "rent": {
+        "flight_rent_per_hour": 1500,
+        "parked_rent_per_hour": 300
+      },
+      "minimum_flight_time_charge_hours": 2.5,
+      "performance": {
+        "speed_knots": 490,
+        "speed_kmph": 860,
+        "fuel_consumption_gph": 350,
+        "max_flight_time_hours": 7.1
+      },
+      "costs": {
+        "fuel_cost_per_gallon": 5.75,
+        "crew_cost_per_hour": 800,
+        "miscellaneous_costs_per_hour": 400,
+        "inspection_cost": 2505,
+        "landing_handling_fees": 800,
+        "airport_parking_per_hour": 250,
+        "crew_parked_cost_hourly": 100
+      },
+      "current_Locations": [
+        "AAE",
+        "AAL"
+      ],
+      "img": "assets/long_range_jet.png"
+    }
+  ]
+}
