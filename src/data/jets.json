@@ -49,7 +49,7 @@
       "minimum_flight_time_charge_hours": 2.5,
       "performance": {
         "speed_knots": 490,
-        "speed_kmph": 860,
+        "speed_kmph": 872,
         "fuel_consumption_gph": 350,
         "max_flight_time_hours": 7.1
       },
@@ -63,8 +63,7 @@
         "crew_parked_cost_hourly": 100
       },
       "current_Locations": [
-        "AAE",
-        "AAL"
+        "AAE"
       ],
       "img": "assets/long_range_jet.png"
     }

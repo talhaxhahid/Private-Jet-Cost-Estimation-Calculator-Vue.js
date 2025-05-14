@@ -1,7 +1,22 @@
 <template>
   <div class="admin">
     <div class="header">
-      <h1>Admin Panel</h1>
+      <div class="header-content">
+        <h1>Admin Panel</h1>
+        <div class="search-container">
+          <input 
+            type="text" 
+            placeholder="Search..." 
+            v-model="searchQuery"
+            @keyup.enter="performSearch"
+            class="search-input"
+          />
+          <i
+            class="fas fa-search search-icon" 
+            @click="performSearch">
+        </i>
+        </div>
+      </div>
     </div>
     <div class="card" v-for="(jet, jetIndex) in jets" :key="jetIndex">
       <!-- JET Header -->
@@ -386,6 +401,8 @@ export default {
 
   data() {
     return {
+      searchQuery: '',
+      allJets:[],
       jets: [],
       editing: {}, // Track which field is being edited for each jet
       originalData: {}, // Store original data in case of cancellation
@@ -397,6 +414,17 @@ export default {
   },
 
   methods: {
+    performSearch() {
+      const searchTerm = this.searchQuery.toLowerCase();
+      if(searchTerm==''){
+        this.jets=this.allJets;}
+      else{
+        
+        this.jets=this.allJets.filter(jet => 
+      jet.name.toLowerCase().includes(searchTerm));
+      }
+      
+    },
     showAirportPopup(jetIndex){
         this.$refs.airportPopup.showPopup(jetIndex);
     },
@@ -410,6 +438,7 @@ export default {
       const response = await fetch("http://localhost:3001/jets");
       const data = await response.json();
       this.jets = data;
+      this.allJets=data;
 
       // Initialize editing state for each jet
       this.jets.forEach((_, jetIndex) => {
@@ -498,11 +527,82 @@ export default {
 <style scoped>
 .header {
   background-color: #203544;
-  padding: 0.5rem;
+  padding: 1.5rem 2rem;
   color: white;
-  text-align: center;
   width: 100%;
   margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-content h1 {
+  margin: 0;
+  
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  width: 250px;
+  transition: width 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-input:focus {
+  width: 300px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: #777;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.search-icon:hover {
+  color: #203544;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .search-container {
+    width: 100%;
+  }
+  
+  .search-input {
+    width: 100%;
+  }
+  
+  .search-input:focus {
+    width: 100%;
+  }
 }
 .info-container {
   display: flex;
